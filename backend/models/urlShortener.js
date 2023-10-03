@@ -1,5 +1,7 @@
 const mongoose = require("../db");
 const Schema = mongoose.Schema;
+
+// new model
 const urlSchema = new Schema(
   {
     original_url: String,
