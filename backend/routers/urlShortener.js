@@ -19,6 +19,7 @@ router.post("/api/shorturl", async (req, res) => {
   let shortUrl = Math.floor(Math.random() * 10000) + 1;
 
   try {
+
     // generating regular expressions
     let expression =
       /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
@@ -30,6 +31,7 @@ router.post("/api/shorturl", async (req, res) => {
       res.json({ error: "Invalid url" });
       return;
     } else {
+
       // test if there is an existing url in the DB
       let allUrl = await Url.find({});
       allUrl.map((url) => {
@@ -40,7 +42,7 @@ router.post("/api/shorturl", async (req, res) => {
             short_url: shortUrl,
             url_status: "link already exit in DB",
           });
-          // return;
+          
         }
         return;
       });
